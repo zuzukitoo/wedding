@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam & Sandro Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins', sans-serif;
+color:white;
+overflow-x:hidden;
+background:linear-gradient(-45deg,#ff0844,#ff4e50,#ff6a88,#ff99ac);
+background-size:400% 400%;
+animation:gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+text-align:center;
+padding:20px;
+}
+
+/* FLOATING HEARTS */
+.heart{
+position:absolute;
+font-size:20px;
+animation:floatUp 8s linear infinite;
+opacity:0.6;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh) scale(0.5);}
+100%{transform:translateY(-10vh) scale(1.2);}
+}
+
+/* ENVELOPE */
+
+.envelope-container{
+position:relative;
+width:320px;
+height:220px;
+perspective:1200px;
+cursor:pointer;
+}
+
+.envelope{
+width:100%;
+height:100%;
+background:linear-gradient(145deg,#fff,#f8d7e3);
+border-radius:12px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+position:relative;
+overflow:hidden;
+}
+
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to right,#ff6a88,#ff0844);
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1.2s;
+}
+
+.envelope-container.open .flap{
+transform:rotateX(180deg);
+}
+
+.initial-circle{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:120px;
+height:120px;
+border-radius:50%;
+background:radial-gradient(circle,#ff0844,#ff6a88);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:32px;
+font-weight:600;
+color:white;
+box-shadow:0 0 30px rgba(255,255,255,0.6);
+transition:0.6s;
+}
+
+.envelope-container.open .initial-circle{
+opacity:0;
+}
+
+/* NAMES */
+
+.names{
+margin-top:40px;
+opacity:0;
+transform:translateY(40px);
+transition:1.5s;
+}
+
+.envelope-container.open ~ .names{
+opacity:1;
+transform:translateY(0);
+}
+
+.names h1{
+font-family:'Great Vibes', cursive;
+font-size:60px;
+animation:fadeSlide 2s ease forwards;
+}
+
+.names p{
+font-size:22px;
+margin-top:10px;
+letter-spacing:2px;
+}
+
+@keyframes fadeSlide{
+0%{opacity:0;transform:translateY(30px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+/* LOVE BIRDS */
+
+.birds{
+position:absolute;
+top:30%;
+left:-100px;
+width:200px;
+animation:fly 10s linear infinite;
+}
+
+@keyframes fly{
+0%{transform:translateX(0);}
+100%{transform:translateX(120vw);}
+}
+
+/* COUNTDOWN */
+
+.countdown{
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.15);
+}
+
+.timer{
+display:flex;
+gap:20px;
+margin-top:30px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.time-box{
+padding:20px 25px;
+border-radius:20px;
+background:rgba(255,255,255,0.2);
+backdrop-filter:blur(10px);
+font-size:22px;
+box-shadow:0 0 20px rgba(255,255,255,0.3);
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px #fff;}
+to{box-shadow:0 0 25px #ff0844;}
+}
+
+/* LOCATION */
+
+.location{
+background:url('https://images.unsplash.com/photo-1603095510471-70a9c2b52b8f') center/cover fixed;
+position:relative;
+}
+
+.location::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.5);
+}
+
+.location h2, .location p{
+position:relative;
+z-index:2;
+}
+
+.location h2{
+font-family:'Playfair Display', serif;
+font-size:40px;
+}
+
+/* LETTER SECTION WITH ANIMATED GRADIENT */
+
+.letter{
+background:linear-gradient(-45deg,#ff0844,#ff4e50,#ff6a88,#ff99ac);
+background-size:400% 400%;
+animation:letterGradient 12s ease infinite;
+color:white;
+}
+
+@keyframes letterGradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.letter h2{
+font-family:'Great Vibes', cursive;
+font-size:50px;
+color:white;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,0.7);
+}
+
+.letter p{
+max-width:600px;
+line-height:1.8;
+font-size:18px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+.names h1{font-size:40px;}
+.initial-circle{width:90px;height:90px;font-size:22px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<20;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(heart);
+}
+</script>
+
+<div class="section">
+<div class="envelope-container" onclick="this.classList.toggle('open')">
+<div class="envelope">
+<div class="flap"></div>
+</div>
+<div class="initial-circle">M & S</div>
+</div>
+
+<div class="names">
+<h1>Mariam & Sandro</h1>
+<p>25 April 2026</p>
+</div>
+
+<svg class="birds" viewBox="0 0 64 64" fill="white">
+<path d="M2 32 Q16 10 32 32 T62 32"/>
+</svg>
+</div>
+
+<div class="section countdown">
+<h2 style="font-family:'Playfair Display';font-size:40px;">Wedding Countdown</h2>
+<div class="timer">
+<div class="time-box"><span id="days"></span><br>Days</div>
+<div class="time-box"><span id="hours"></span><br>Hours</div>
+<div class="time-box"><span id="minutes"></span><br>Minutes</div>
+<div class="time-box"><span id="seconds"></span><br>Seconds</div>
+</div>
+</div>
+
+<div class="section location">
+<h2>Batumi, Georgia</h2>
+<p>Our Beautiful Celebration Place</p>
+</div>
+
+<div class="section letter">
+<h2>Dear Guest</h2>
+<p>
+With joyful hearts, we invite you to celebrate the beginning of our forever.
+Your presence will add warmth and happiness to our special day.
+Join us as we promise love, laughter, and a lifetime together.
+</p>
+</div>
+
+<script>
+const weddingDate = new Date("April 25, 2026 00:00:00").getTime();
+setInterval(()=>{
+const now=new Date().getTime();
+const distance=weddingDate-now;
+
+document.getElementById("days").innerHTML=Math.floor(distance/(1000*60*60*24));
+document.getElementById("hours").innerHTML=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").innerHTML=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("seconds").innerHTML=Math.floor((distance%(1000*60))/1000);
+},1000);
+</script>
+
+</body>
+</html>
